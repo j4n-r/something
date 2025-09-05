@@ -14,10 +14,13 @@ typedef double      f64;
 #define bool u8
 #define true (u8)1
 
+// make functions "internal" to the compilation unit, make everyint internal besides public facing apis
+// if someone would import the parts as a lib
+#define internal        static   
 // when declared in file scope
-#define global        static 
+#define global          static 
 // when declared in function scope (will persist it's value over function calls
-#define local_persist static 
+#define local_persist   static 
 
 #define Bytes(n)      (n)
 #define Kilobytes(n)  (n << 10)

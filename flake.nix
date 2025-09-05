@@ -22,6 +22,7 @@
             clang-tools
             clang
             stdenv
+            valgrind
           ];
         };
       }
