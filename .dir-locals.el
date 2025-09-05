@@ -1,0 +1,3 @@
+((c-ts-mode . ((eval . (flycheck-mode -1))
+               (eval . (lsp-mode -1))
+               (eval . (apheleia-mode -1)))))
