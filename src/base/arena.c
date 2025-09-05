@@ -12,7 +12,7 @@ void ArenaRelease(Arena *arena) { free(arena); }
 // push some bytes onto the 'stack' - the way to allocate
 void *ArenaPush(Arena *arena, u64 size) {
     if (arena->pos + size > ARENA_SIZE) {
-        printf("Arena size too small.\narena_pos: %d\nsize_to_alloc: %d\nARENA_SIZE: %d", arena->pos, size,ARENA_SIZE);
+        printf("Arena size too small.\narena_pos: %ld\nsize_to_alloc: %ld\nARENA_SIZE: %d", arena->pos, size,ARENA_SIZE);
         exit(1);
     }
     void *start_addr = (u8 *)arena + arena->pos;
@@ -21,7 +21,7 @@ void *ArenaPush(Arena *arena, u64 size) {
 }
 void *ArenaPushZero(Arena *arena, u64 size) {
     if (arena->pos + size > ARENA_SIZE) {
-        printf("Arena size too small.\narena_pos: %d\nsize_to_alloc: %d", arena->pos, size);
+        printf("Arena size too small.\narena_pos: %ld\nsize_to_alloc: %ld", arena->pos, size);
         exit(1);
     }
 
