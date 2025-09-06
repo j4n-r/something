@@ -17,7 +17,7 @@ void* ArenaPush(Arena* arena, u64 size);
 void* ArenaPushZero(Arena* arena, u64 size);
 
 // some macro helpers that I've found nice:
-#define PushArray(arena, type, count)                                          \
+#define PushArrayNoZero(arena, type, count)                                          \
     (type*) ArenaPush((arena), sizeof(type) * (count))
 #define PushArrayZero(arena, type, count)                                      \
   (type*) ArenaPushZero((arena), sizeof(type) * (count))

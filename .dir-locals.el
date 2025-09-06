@@ -2,4 +2,5 @@
                (eval . (lsp-mode -1))
                (eval . (apheleia-mode -1))
                (eval . (etags-regen-mode t))
+               (eval . (xref-etags-mode t))
                      )))

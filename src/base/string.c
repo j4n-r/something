@@ -11,22 +11,22 @@ Char8 Char8FromBytes(u8 *bytes) {
     Char8 chr = {0};
     chr.str = bytes;
     if ((bytes[0] & 0x80) == 0x00) {
-        chr.bytes = 1; 
+        chr.size = 1; 
     } else if ((bytes[0] & 0xE0) == 0xC0 &&
                (bytes[1] & 0xC0) == 0x80)
     {
-        chr.bytes = 2;
-    } else if ((bytes[0] & 0xF0) == 0xD0 &&
+        chr.size = 2;
+    } else if ((bytes[0] & 0xF0) == 0xE0 &&
                (bytes[1] & 0xC0) == 0x80 &&
                (bytes[2] & 0xC0) == 0x80)
     {
-        chr.bytes = 3;
-    } else if ((bytes[0] & 0xF0) == 0xF0 &&
+        chr.size = 3;
+    } else if ((bytes[0] & 0xF8) == 0xF0 &&
                (bytes[1] & 0xC0) == 0x80 &&
                (bytes[2] & 0xC0) == 0x80 &&
                (bytes[3] & 0xC0) == 0x80)
     { 
-        chr.bytes = 4;
+        chr.size = 4;
     } else {
         printf("Not a valid UTF-8 Char");
         exit(1);
@@ -35,8 +35,9 @@ Char8 Char8FromBytes(u8 *bytes) {
 }
 
 void Char8Print(Char8 *chr) {
-    printf("%.*s", (int)chr->bytes, chr->str);
+    printf("%.*s", (int)chr->size, chr->str);
 }
+
 
 String8 Str8FromLiteral(Arena *arena, char *str) {
     String8 result = {0};

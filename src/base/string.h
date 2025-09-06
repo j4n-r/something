@@ -1,15 +1,15 @@
 #ifndef BASE_STRING
 #define BASE_STRING
 
-// UTF-8 String
+// UTF-8 string slice, treat them as immutable
 typedef struct {
     u8 *str;
-    u64 size; // number of chars, not number of bytes
+    u64 size;   // number of bytes
 } String8;
 
 typedef struct {
     u8 *str;
-    u64 bytes;      // number of utf-8 bytes
+    u64 size;   // number of utf-8 bytes
 } Char8;
 
 // null terminated String8
@@ -17,8 +17,6 @@ typedef struct {
     u8 *str;
     u64 size;
 } CString8;
-
-
 
 
 String8 Str8New(u8 *str, u64 size);
@@ -31,6 +29,6 @@ Char8 Char8FromBytes(u8 *bytes);
 
 CString8 Str8ToCString(String8 str); 
 
-void PrintChar8
+void PrintChar8(Char8 *chr);
 
 #endif // BASE_STRING
