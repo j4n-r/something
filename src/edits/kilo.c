@@ -36,20 +36,30 @@ int main(void) {
     enableRawMode();
 
     Arena *kilo_arena = ArenaAlloc();
-    u8 *buf = ArenaPush(kilo_arena, 4);
-    while (1) {
-        if (read(STDIN_FILENO, buf, 4) == -1 && errno != EAGAIN) {
+    for (;;) {
+        u8 *buf = ArenaPush(kilo_arena, 4);  
+        i64 n;
+
+        n = read(STDIN_FILENO, buf, 4);
+        if (n == 0) {
+            continue;
+        }
+        if (n == -1) {
             OS_PanicFromLit("read");
         }
-        Char8 c = Char8FromBytes(buf);
+
+        Char8 c = Char8FromBytes(buf); 
+
         if (c.str[0] != '\0') {
             Char8Print(&c);
+            fflush(stdout);
         }
         if (c.str[0] == 'q') {
-            break;
+            exit(0);            // atexit restores termios
         }
+
+        ArenaPop(kilo_arena, 5);
     }
 
-    perror("read");
     return 0;
 }
