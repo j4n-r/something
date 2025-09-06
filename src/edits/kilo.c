@@ -23,9 +23,9 @@ int main(void) {
 
     Arena *kilo_arena = ArenaAlloc();
     u8 *buf = ArenaPush(kilo_arena, 5);
-    buf[4] = '\0';
 
     while (read(STDIN_FILENO, buf, 4) > 0) {
+        Char8 c = Char8FromBytes(buf);
         if (iscntrl(buf[0])) {
 
         }
@@ -33,7 +33,8 @@ int main(void) {
             break;
         }
         else {
-            printf("%s",buf);
+            /* printf("%.*s",4, buf); */
+            Char8Print(&c);
         }
             printf("\n");
     }
