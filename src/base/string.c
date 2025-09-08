@@ -38,6 +38,12 @@ void Char8Print(Char8 *chr) {
     printf("%.*s", (int)chr->size, chr->str);
 }
 
+/* String8 Char8SliceFromLiteral(char *str) { */
+/*     Char8 result = {0}; */
+/*     result.size = strlen(str)-1;  */
+/*     result.str = str; */
+/*     return result;  */
+/* }  */
 
 String8 Str8FromLiteral(Arena *arena, char *str) {
     String8 result = {0};

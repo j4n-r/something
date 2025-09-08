@@ -8,7 +8,14 @@
 #include <stdlib.h>
 #include <termios.h>
 #include <unistd.h>
+
+#define CTRL_KEY(k) ((k) & 0x1f)
+
 struct termios orig_termios;
+
+bool IsCtrlCombination(Char8 key, u8 letter) {
+    return key.str[0] == (letter & 0x1F);
+}
 
 void disableRawMode() {
     if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios) == -1)
@@ -42,7 +49,7 @@ int main(void) {
 
         n = read(STDIN_FILENO, buf, 4);
         if (n == 0) {
-            continue;
+           continue;
         }
         if (n == -1) {
             OS_PanicFromLit("read");
@@ -54,8 +61,8 @@ int main(void) {
             Char8Print(&c);
             fflush(stdout);
         }
-        if (c.str[0] == 'q') {
-            exit(0);            // atexit restores termios
+        if (IsCtrlCombination(c, 'q')) {
+            exit(0);
         }
 
         ArenaPop(kilo_arena, 5);
@@ -63,3 +70,4 @@ int main(void) {
 
     return 0;
 }
+
