@@ -2,4 +2,5 @@
                (lsp-mode . -1)
                (aphelios-mode . -1)
                (etags-regen-mode . t)
+               (compile-command . "./build.sh")
                (xref-etags-mode . t))))

@@ -7,9 +7,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "types.h"
-#include "arena.h"
-#include "string.h"
+#include "base_types.h"
+#include "base_arena.h"
+#include "base_string.h"
 
 
 #endif // BASE_INC

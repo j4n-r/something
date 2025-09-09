@@ -1,6 +1,5 @@
-#include "arena.h"
+#include "base_arena.h"
 
-// create or destroy a 'stack' - an "arena"
 Arena *ArenaAlloc(void) {
     Arena *arena = (Arena *)calloc(ARENA_SIZE, 1);
     arena->pos = sizeof(arena);
@@ -30,7 +29,7 @@ void *ArenaPush(Arena *arena, u64 size) {
     arena->pos += size;
     return start_addr;
 }
-// pop some bytes off the 'stack' - the way to free
+
 void ArenaPop(Arena *arena, u64 size) {
     if (arena->pos < size) {
         exit(1);
