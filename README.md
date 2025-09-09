@@ -1,10 +1,11 @@
 # Something
-Code and ideas are and will be taken from (https://github.com/EpicGamesExt/raddebugger) and (https://www.rfleury.com/)
+Thanks https://www.rfleury.com/ for the content and https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him)
 
 ### Conventions:
 - Structs: CamelCase
 - Functions: CamelCasew
 - Variables: snake_case 
+- Macros: CAPS_LOCK
 
 ### Helper Commands
 
