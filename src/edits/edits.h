@@ -9,7 +9,8 @@ typedef struct  {
     struct termios orig_termios;
 } EditsConfig;
 
-EditsConfig e_conf = {0};
+
+extern EditsConfig e_conf;
 
 void edits_start();
 

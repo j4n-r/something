@@ -10,12 +10,11 @@ void EDT_editorProcessKey(Char8 c) {
     }
 
 }
-Char8 EDT_editorReadKey() {
-    Arena *kilo_arena = ArenaAlloc();
+Char8 EDT_editorReadKey(EditsConfig *e_conf) {
     for (;;) {
-        EDT_editorRefreshScreen();
+        EDT_editorRefreshScreen(e_conf);
 
-        u8 *buf = ArenaPush(kilo_arena, 4);  
+        u8 buf[4] = {0};
         i64 n;
 
         n = read(STDIN_FILENO, buf, 4);
@@ -26,12 +25,10 @@ Char8 EDT_editorReadKey() {
         if (n == -1) {
             write(STDOUT_FILENO, "\x1b[2J", 4);
             write(STDOUT_FILENO, "\x1b[H", 3);
-            OS_PanicFromLit("read");
+            OS_PANIC("read");
         }
 
         Char8 c = Char8FromBytes(buf);
         EDT_editorProcessKey(c);
-
-        ArenaPop(kilo_arena, 5);
     }
 }
