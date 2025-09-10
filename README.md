@@ -1,11 +1,13 @@
 # Something
 Thanks https://www.rfleury.com/ for the content and https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him)
+And thanks https://viewsourcecode.org/snaptoken/kilo
 
 ### Conventions:
-- Structs: PRE_Camel (prefix + CamelCase)
-- Functions: PRE_CamelCase 
+- Structs: PRE_ (prefix + CamelCase)
+- Functions with Prefix: PRE_camelCase 
+- Functions without prefix: PascaleCase 
 - Variables: snake_case 
-- Macros: CAPS_LOCK
+- Macros: 
 
 ### Helper Commands
 

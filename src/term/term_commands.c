@@ -27,14 +27,3 @@ void TERM_getWindowSize(u32 *rows, u32 *cols) {
   }
 }
 
-void TERM_clearScreen() {
-    if (write(STDOUT_FILENO, "\x1b[2J", 4) == -1) {
-        OS_PANIC("clearing Screen failed");
-    }
-}
-
-void TERM_moveCursorTopLeft() {
-    if ( write(STDOUT_FILENO, "\x1b[H", 3) == -1) {
-        OS_PANIC("moving cursor top left failed");
-    }
-}

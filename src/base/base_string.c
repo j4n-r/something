@@ -59,11 +59,10 @@ String8 Str8Append(Arena *arena, String8 str, String8 str_to_append) {
     return result;
 }
 
-String8 Str8FromLiteral(Arena *arena, char *str) {
+String8 Str8FromLiteral(char *str) {
     String8 result = {0};
-    result.size = strlen(str);
-    result.str = ArenaPush(arena, strlen(str));
-    memcpy(result.str, str, strlen(str));
+    result.size = sizeof(*str) - 1;
+    result.str = (u8*) str;
     return result;
 }
 

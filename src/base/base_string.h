@@ -10,16 +10,21 @@ typedef struct {
 typedef String8 CString8; // null terminated
 
 typedef struct {
-    u8 chr[4];
+     u8 chr[4];
     u8 size;
 } Char8;
 
+#define STR8_LIT(s) ((String8){ (u8*)(s), sizeof(s) - 1 })
+// casting is not allowed in static expressions
+#define STR8_GLOBAL_LIT(s) { (unsigned char*)(s), sizeof(s) - 1 }
+
 String8 Str8New(u8 *str, u64 size);
-String8 Str8FromLiteral(Arena *arena, char *str);
+String8 Str8FromLiteral(char *str);
 String8 Str8Concat(Arena *arena, String8 str, String8 str_to_concat); 
 String8 Str8GetCharByIndex(String8 str, u64 idx);
 String8 Str8Slice(String8 str, u64 start_idx, u64 end_idx);
 String8 Str8Append(Arena *arena, String8 str, String8 str_to_append);
+
 
 Char8 Char8FromBytes(u8 *bytes);
 
