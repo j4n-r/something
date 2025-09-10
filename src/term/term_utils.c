@@ -23,5 +23,5 @@ void TERM_enableRawMode(struct termios *orig_termios) {
 
 
 bool TERM_IsCtrlCombination(Char8 key, u8 letter) {
-    return key.str[0] == (letter & 0x1F);
+    return key.chr[0] == (letter & 0x1F);
 }

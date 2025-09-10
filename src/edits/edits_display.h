@@ -2,6 +2,6 @@
 #define EDITS_DISPLAY
 
 
-void EDT_editorRefreshScreen();
-void EDT_editorDrawRows();
+void EDT_refreshScreen();
+void EDT_drawRows();
 #endif // EDITS_DISPLAY

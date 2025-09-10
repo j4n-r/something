@@ -2,8 +2,8 @@
 Thanks https://www.rfleury.com/ for the content and https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him)
 
 ### Conventions:
-- Structs: CamelCase
-- Functions: CamelCasew
+- Structs: PRE_Camel (prefix + CamelCase)
+- Functions: PRE_CamelCase 
 - Variables: snake_case 
 - Macros: CAPS_LOCK
 

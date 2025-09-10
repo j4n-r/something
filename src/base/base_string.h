@@ -7,23 +7,19 @@ typedef struct {
     u64 size;   // number of bytes
 } String8;
 
+typedef String8 CString8; // null terminated
+
 typedef struct {
-    u8 *str;
-    u64 size;   // number of utf-8 bytes
+    u8 chr[4];
+    u8 size;
 } Char8;
-
-// null terminated String8
-typedef struct {
-    u8 *str;
-    u64 size;
-} CString8;
-
 
 String8 Str8New(u8 *str, u64 size);
 String8 Str8FromLiteral(Arena *arena, char *str);
 String8 Str8Concat(Arena *arena, String8 str, String8 str_to_concat); 
 String8 Str8GetCharByIndex(String8 str, u64 idx);
 String8 Str8Slice(String8 str, u64 start_idx, u64 end_idx);
+String8 Str8Append(Arena *arena, String8 str, String8 str_to_append);
 
 Char8 Char8FromBytes(u8 *bytes);
 
