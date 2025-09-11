@@ -3,7 +3,7 @@
 
 #define ERR_LOG "error.txt"
 
-void LogToFile(
+void LogToFile()
 
 
 #endif // BASE_LOG

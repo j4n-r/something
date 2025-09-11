@@ -1,9 +1,8 @@
-static EDT_Config e_conf;
-static String8    term_buf;
+static EDT_Config e_conf   = {0}; // they should be zeroed out anyways
+static String8    term_buf = {0};
 
 void start_edits(void) {
     Arena *perm_edits_arena = ArenaAlloc();
-    e_conf = (EDT_Config) {0};
 
     e_conf.logfile_path = STR8_LIT("edits_log.txt");
     String8 term_buf = {0};

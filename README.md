@@ -7,7 +7,7 @@ And thanks https://viewsourcecode.org/snaptoken/kilo
 - Functions with Prefix: PRE_camelCase 
 - Functions without prefix: PascaleCase 
 - Variables: snake_case 
-- Macros: 
+- Macros: PRE_CAPS_LOCK
 
 ### Helper Commands
 

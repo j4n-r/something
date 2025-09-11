@@ -48,6 +48,7 @@ void Char8Print(Char8 *chr) {
 /*     return result;  */
 /* }  */
 
+// appends to str 
 String8 Str8Append(Arena *arena, String8 str, String8 str_to_append) {
     u64 size = str.size + str_to_append.size;
     String8 result = {0};

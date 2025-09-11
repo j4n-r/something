@@ -3,5 +3,5 @@
 
 
 void EDT_refreshScreen();
-void EDT_drawRows();
+String8 EDT_drawRows();
 #endif // EDITS_DISPLAY

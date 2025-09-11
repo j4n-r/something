@@ -9,6 +9,13 @@ Arena *ArenaAlloc(void) {
 
 void ArenaRelease(Arena *arena) { free (arena); }
 
+/* void ArenaClear(Arena *arena) { */
+/*     arena->pos = sizeof(arena); */
+/*     void *start_addr = (u8 *)arena + arena->pos; */
+/*     memset(start_addr, 0, size); */
+/*     arena->pos += size; */
+/* } */
+
 void *ArenaPushNoZero(Arena *arena, u64 size) {
     if (arena->pos + size > ARENA_SIZE) {
         printf("Arena size too small.\narena_pos: %ld\nsize_to_alloc: %ld\nARENA_SIZE: %d", arena->pos, size,ARENA_SIZE);
@@ -39,6 +46,7 @@ void ArenaPop(Arena *arena, u64 size) {
 
 // get the # of bytes currently allocated.
 u64 ArenaGetPos(Arena *arena) { return arena->pos; }
+
 
 /* // also some useful popping helpers: */
 /* void ArenaSetPosBack(Arena *arena, u64 pos); */
