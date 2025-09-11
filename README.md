@@ -15,3 +15,7 @@ And thanks https://viewsourcecode.org/snaptoken/kilo
  nix run .#test_ansi '\x1b[6n'
 ```
 
+``` fish
+showkey -a
+```
+

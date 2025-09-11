@@ -4,6 +4,8 @@
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 typedef struct  {
+    u32 cx;
+    u32 cy;
     u32 screen_rows;
     u32 screen_cols;
     struct termios orig_termios;
