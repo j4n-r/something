@@ -26,8 +26,8 @@ void EDT_processKey(Char8 c) {
         fflush(stdout);
     }
     if (TERM_IsCtrlCombination(c, 'q')) {
-        write(STDOUT_FILENO, "\x1b[2J", 4);
-        write(STDOUT_FILENO, "\x1b[H", 3);
+        write(STDOUT_FILENO, TERM_CLEAR_SCREEN.str, 4);
+        write(STDOUT_FILENO, TERM_MOVE_CURSOR_TOP_LEFT.str, 3);
         exit(0);
     }
 

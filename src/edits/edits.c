@@ -15,9 +15,10 @@ void start_edits(void) {
 
     EDT_debugEConfToLogFile(&e_conf);
     for (;;) {
-        EDT_refreshScreen(frame_arena, &e_conf, term_buf);
+        EDT_refreshScreen(frame_arena, &e_conf, &term_buf);
         Char8 c = EDT_readKey(&e_conf);
         EDT_processKey(c);
+        ArenaClear(frame_arena);
     }
 }
 

@@ -2,10 +2,14 @@
 #define BASE_ARENA
 
 #define ARENA_SIZE Megabytes(1)
+#define ARENA_HEADER_SIZE ((u64)sizeof(Arena))
+
 typedef struct {
+  u64       base_pos;
   u64       pos;
   u64       size;
 } Arena;
+
 
 
 // create or destroy a 'stack' - an "arena"

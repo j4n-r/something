@@ -48,16 +48,16 @@ void Char8Print(Char8 *chr) {
 /*     return result;  */
 /* }  */
 
-// appends to str 
-String8 Str8Append(Arena *arena, String8 str, String8 str_to_append) {
-    u64 size = str.size + str_to_append.size;
-    String8 result = {0};
-    result.str = (u8*) ArenaPush(arena, size);
-    memcpy(result.str, str.str, str.size);
-    result.size = str.size;
-    memcpy((u8*)result.str + str.size, str_to_append.str, str_to_append.size);
-    result.size += str_to_append.size;
-    return result;
+// appends to str
+// this invalidates the to str.str pointer and reassigns a new one 
+void Str8Append(Arena *arena, String8 *str, String8 str_to_append) {
+    String8 tmp = {0};
+    tmp.size = str->size + str_to_append.size;
+    tmp.str = (u8*) ArenaPush(arena, tmp.size);
+    memcpy(tmp.str,              str->str,            str->size);
+    memcpy(tmp.str + str->size,   str_to_append.str,  str_to_append.size);
+    str->str = tmp.str;
+    str->size = tmp.size;
 }
 
 String8 Str8FromLiteral(char *str) {
@@ -72,8 +72,8 @@ String8 Str8Concat(Arena *arena, String8 str, String8 str_to_concat) {
     u64 size = str.size + str_to_concat.size;
     String8 result = {0};
     result.str = ArenaPush(arena, size + 1);
-    memcpy(result.str,str.str, str.size);
-    memcpy(result.str + str.size , str_to_concat.str, str.size);
+    memcpy(result.str           , str.str,           str.size);
+    memcpy(result.str + str.size, str_to_concat.str, str.size);
 
     return result;
 }

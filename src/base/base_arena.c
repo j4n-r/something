@@ -1,20 +1,19 @@
 #include "base_arena.h"
 
 Arena *ArenaAlloc(void) {
-    Arena *arena = (Arena *)calloc(ARENA_SIZE, 1);
-    arena->pos = sizeof(arena);
+    Arena *arena = (Arena *)calloc(ARENA_HEADER_SIZE + ARENA_SIZE, 1);
+    arena->pos = ARENA_HEADER_SIZE;
     arena->size = ARENA_SIZE;
     return arena;
 }
 
 void ArenaRelease(Arena *arena) { free (arena); }
 
-/* void ArenaClear(Arena *arena) { */
-/*     arena->pos = sizeof(arena); */
-/*     void *start_addr = (u8 *)arena + arena->pos; */
-/*     memset(start_addr, 0, size); */
-/*     arena->pos += size; */
-/* } */
+void ArenaClear(Arena *arena) {
+    arena->pos = ARENA_HEADER_SIZE;
+    void *start_addr = (u8*) arena + arena->pos;
+    memset(start_addr, 0, arena->size);
+}
 
 void *ArenaPushNoZero(Arena *arena, u64 size) {
     if (arena->pos + size > ARENA_SIZE) {

@@ -23,7 +23,8 @@ String8 Str8FromLiteral(char *str);
 String8 Str8Concat(Arena *arena, String8 str, String8 str_to_concat); 
 String8 Str8GetCharByIndex(String8 str, u64 idx);
 String8 Str8Slice(String8 str, u64 start_idx, u64 end_idx);
-String8 Str8Append(Arena *arena, String8 str, String8 str_to_append);
+
+void Str8Append(Arena *arena, String8 *str, String8 str_to_append);
 
 
 Char8 Char8FromBytes(u8 *bytes);
