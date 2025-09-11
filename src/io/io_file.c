@@ -10,7 +10,7 @@ void IO_writeToFile(String8 path, String8 content) {
     
     i64 bytes = write(fd, content.str, content.size);
     if (bytes == -1) {
-        OS_PANIC("Error during opening of error log file");
+        OS_PANIC("Error during writing of error log file");
     }
     close(fd);
 }

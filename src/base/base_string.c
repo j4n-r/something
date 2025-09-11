@@ -1,6 +1,6 @@
 #include "base_string.h"
 
-String8 Str8(u8 *str, u64 size) {
+String8 Str8New(u8 *str, u64 size) {
     String8 string = {0};
     string.str = str;
     string.size = size;
