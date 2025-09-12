@@ -21,12 +21,10 @@ void EDT_refreshScreen(Arena *arena, String8 *term_buf) {
     snprintf(buf, sizeof(buf), "\x1b[%d;%dH", e_conf.cy + 1, e_conf.cx + 1);
     Str8Append(arena, term_buf, Str8FromLiteral(buf));
 
-    Str8Append(arena, term_buf, TERM_MOVE_CURSOR_TOP_LEFT);
     Str8Append(arena, term_buf, TERM_SHOW_CURSOR);
-
 
     IO_writeToFile(e_conf.logfile_path, *term_buf);
 
-    
+    EDT_debugEConfToLogFile(&e_conf);
     write(STDOUT_FILENO, term_buf->str, term_buf->size);
 }

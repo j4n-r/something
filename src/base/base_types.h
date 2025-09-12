@@ -12,7 +12,8 @@ typedef float       f32;
 typedef double      f64;
 
 #define bool u8
-#define true (u8)1
+#define FALSE 0
+#define TRUE 1
 
 // make functions "internal" to the compilation unit, make everyint internal besides public facing apis
 // if someone would import the parts as a lib

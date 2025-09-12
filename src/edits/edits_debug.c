@@ -1,9 +1,19 @@
 
 void EDT_debugEConfToLogFile(EDT_Config *e_conf) {
     char buf[100] = {0};
-    i32 bytes = sprintf(buf, "Screen rows: %u\nScreen cols: %u\nlogfile_path: %.*s",
-            e_conf->screen_rows, e_conf->screen_cols ,
-            (int)e_conf->logfile_path.size, e_conf->logfile_path.str);
+    i32 bytes = sprintf(buf,
+        "Screen rows: %u\n"
+        "Screen cols: %u\n"
+        "Cursor x: %d\n"
+        "Cursor y: %d\n"
+        "logfile_path: %.*s",
+        e_conf->screen_rows,
+        e_conf->screen_cols,
+        e_conf->cx,
+        e_conf->cy,
+        (int)e_conf->logfile_path.size,
+        e_conf->logfile_path.str
+    );
     if (bytes < 0) {
         OS_PANIC("debug logging to buf failed");
     }

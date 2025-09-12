@@ -1,5 +1,5 @@
 # Something
-Thanks https://www.rfleury.com/ for the content and https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him)
+Thanks https://www.rfleury.com/ for the content and https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him) \
 And thanks https://viewsourcecode.org/snaptoken/kilo
 
 ### Conventions:
@@ -19,3 +19,6 @@ And thanks https://viewsourcecode.org/snaptoken/kilo
 showkey -a
 ```
 
+## Notes
+- [ ] Bracketed paste mode:
+- [ ] Resizes & signals:
