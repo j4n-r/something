@@ -43,10 +43,3 @@ void ArenaPop(Arena *arena, u64 size) {
     arena->pos -= size;
 }
 
-// get the # of bytes currently allocated.
-u64 ArenaGetPos(Arena *arena) { return arena->pos; }
-
-
-/* // also some useful popping helpers: */
-/* void ArenaSetPosBack(Arena *arena, u64 pos); */
-/* void ArenaClear(Arena *arena); */

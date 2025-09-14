@@ -10,6 +10,7 @@ int main() {
     if (res.is_error) {
         printf("error");
     }
+    printf("%u", res.data);
     exit(0);
 }
 

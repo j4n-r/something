@@ -9,24 +9,20 @@ typedef struct {
     String8 msg;
 } Error;
 
-#define OK(T, data) (Result_##T){ .is_error = FALSE, .data = (data) }
+#define OK(T, val)  (Result_##T){ .is_error = FALSE, .data = (val) }
 #define ERR(T, err) (Result_##T){ .is_error = TRUE, .error = (err) }
 
-#define DEFINE_RESULT(T)  \
-    typedef struct {            \
-        bool is_error;            \
-        union {                 \
-            T data;             \
-            Error error;          \
-        };                      \
+#define DEFINE_RESULT(T)    \ 
+    typedef struct {        \
+        bool is_error;      \
+        union {             \
+            T data;         \
+            Error error;    \
+        };                  \
     } Result_##T;
 
 
 DEFINE_RESULT(u8) 
 DEFINE_RESULT(String8)
-
-
-
-
 
 #endif // BASE_RESULT
