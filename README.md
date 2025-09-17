@@ -26,6 +26,6 @@ showkey -a
 
 ### Keyboard input
 Since the goal is to have vim like layers (normal, insert, visual) and most
-of the shotcuts will be with a  <leader> key (SPC) i will implement the kitty 
-keyboard protocol and reduce the 
+of the shotcuts will be with a  <leader> key (SPC) i will not implement the kitty 
+keyboard protocol since i do not all the modifier keys and this will make it compatible with all terminals 
 
