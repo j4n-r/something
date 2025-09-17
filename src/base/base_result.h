@@ -1,5 +1,5 @@
-#ifndef BASE_RESULT
-#define BASE_RESULT
+#ifndef BASE_RESULT_H
+#define BASE_RESULT_H
 
 #define GENERIC_ERROR   0x01
 #define OS_ERROR        0x02
@@ -12,7 +12,7 @@ typedef struct {
 #define OK(T, val)  (Result_##T){ .is_error = FALSE, .data = (val) }
 #define ERR(T, err) (Result_##T){ .is_error = TRUE, .error = (err) }
 
-#define DEFINE_RESULT(T)    \ 
+#define DEFINE_RESULT(T)    \
     typedef struct {        \
         bool is_error;      \
         union {             \
@@ -25,4 +25,4 @@ typedef struct {
 DEFINE_RESULT(u8) 
 DEFINE_RESULT(String8)
 
-#endif // BASE_RESULT
+#endif // BASE_RESULT_H

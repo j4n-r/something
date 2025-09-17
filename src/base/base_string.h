@@ -1,5 +1,5 @@
-#ifndef BASE_STRING
-#define BASE_STRING
+#ifndef BASE_STRING_H
+#define BASE_STRING_H
 
 // UTF-8 string slice, treat them as immutable
 typedef struct {
@@ -34,4 +34,4 @@ CString8 Str8ToCString(String8 str);
 
 void PrintChar8(Char8 *chr);
 
-#endif // BASE_STRING
+#endif // BASE_STRING_H

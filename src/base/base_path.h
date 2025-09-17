@@ -1,5 +1,5 @@
-#ifndef BASE_PATH
-#define BASE_PATH
+#ifndef BASE_PATH_H
+#define BASE_PATH_H
 
 typedef Enum PathType {
     RELATIVE_PATH,
@@ -13,4 +13,4 @@ typedef struct {
 
 
 
-#endif // BASE_PATH
+#endif // BASE_PATH_H

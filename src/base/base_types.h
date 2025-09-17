@@ -1,5 +1,5 @@
-#ifndef BASE_TYPES
-#define BASE_TYPES
+#ifndef BASE_TYPES_H
+#define BASE_TYPES_H
 typedef uint8_t      u8;
 typedef uint16_t    u16;
 typedef uint32_t    u32;
@@ -27,4 +27,4 @@ typedef double      f64;
 #define Kilobytes(n)  (n << 10)
 #define Megabytes(n)  (n << 20)
 
-#endif // BASE_TYPES
+#endif // BASE_TYPES_H

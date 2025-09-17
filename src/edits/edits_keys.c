@@ -16,6 +16,7 @@ EDT_KeyResult EDT_readKey() {
         }
 
         if (bytes[0] == '\x1b') {
+    result.str = (u8*) ArenaPush(arena, size);
             if (read(STDIN_FILENO, &buf[1], 1) != 1) { }
             if (read(STDIN_FILENO, &buf[2], 1) != 1) {
                 return EDT_makeCharKeyResult(c);

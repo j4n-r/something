@@ -1,4 +1,3 @@
-#include "base_string.h"
 
 String8 Str8New(u8 *str, u64 size) {
     String8 string = {0};

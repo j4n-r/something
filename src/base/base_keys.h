@@ -1,8 +1,8 @@
-#ifndef BASE_KEYS
-#define BASE_KEYS
+#ifndef BASE_KEYS_H
+#define BASE_KEYS_H
 
 typedef enum {
-    CTRL == 2000,
+    CTRL = 2000,
     ALT,
     SUPER,
 } ModKey ;
@@ -16,12 +16,12 @@ typedef enum {
 } SpecialKey;
 
 typedef struct {
-    Modkey mod;
+    ModKey mod;
     SpecialKey s_key;
     u8 bytes[4];  // valid UTF-8 bytes
     u8 size; 
 } KeyEvent;
 
-DEFINE_RESULT(KeyEvent);
+DEFINE_RESULT(KeyEvent)
 
-#ifndef // BASE_KEYS
+#endif // BASE_KEYS_H

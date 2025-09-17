@@ -1,6 +1,6 @@
-#ifndef EDITS_DEBUG
-#define EDITS_DEBUG
+#ifndef EDITS_DEBUG_H
+#define EDITS_DEBUG_H
 
 void EDT_debugEConfToLogFile();
 
-#endif // EDITS_DEBUG
+#endif // EDITS_DEBUG_H

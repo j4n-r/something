@@ -1,5 +1,3 @@
-#ifndef OS_ERRO
-#define OS_ERRO
 
 void OS_panicFromLit(const char *msg, const char *file, int line) {
     int err = errno; 
@@ -7,5 +5,3 @@ void OS_panicFromLit(const char *msg, const char *file, int line) {
             msg, file, line, err, strerror(err));
     exit(0);
 }
-
-#endif // OS_ERRO

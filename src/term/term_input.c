@@ -82,6 +82,16 @@ Result_KeyEvent TERM_parseTerminalInput(Arena *arena) {
             return OK(KeyEvent, keyEvent);
         }
         if ((bytes[0] & 0xE0) == 0xC0) {
+            for (u8 i = 1;;i++) {
+                buf[i] = peekAndRead(&que);
+                if (buf8[0] & 0xC0) == 0x80) {
+                    continue;
+                }
+                buf[i] = peekAndRead(&que);
+                memcpy(keyEvent.bytes, buf8, i+1); 
+
+            }
+
             buf[1] = peekAndRead(&que);
             if (buf8[0] & 0xC0) == 0x80) {
                 keyEvent.bytes[0] = byte;

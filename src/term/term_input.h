@@ -1,5 +1,5 @@
-#ifndef TERM_INPUT
-#define TERM_INPUT
+#ifndef TERM_INPUT_H
+#define TERM_INPUT_H
 
 
-#endif // TERM_INPUT
+#endif // TERM_INPUT_H

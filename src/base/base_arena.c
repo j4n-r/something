@@ -1,4 +1,3 @@
-#include "base_arena.h"
 
 Arena *ArenaAlloc(void) {
     Arena *arena = (Arena *)calloc(ARENA_HEADER_SIZE + ARENA_SIZE, 1);

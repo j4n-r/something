@@ -1,16 +1,15 @@
 #include "base/base_inc.h"
 #include "base/base_inc.c"
+#include "os/os_inc.h"
+#include "os/os_inc.c"
+#include "io/io_inc.h"
+#include "io/io_inc.c"
+#include "term/term_inc.h"
+#include "term/term_inc.c"
 
-
-Result_u8 testResult() {
-    return OK(u8, 2); 
-}
 int main() {
-    Result_u8 res = testResult();
-    if (res.is_error) {
-        printf("error");
-    }
-    printf("%u", res.data);
+    Arena *test_arena = ArenaAlloc();
+    Result_KeyEvent key = TERM_parseTerminalInput(test_arena);
     exit(0);
 }
 

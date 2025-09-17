@@ -1,5 +1,5 @@
-#ifndef EDITS
-#define EDITS
+#ifndef EDITS_H
+#define EDITS_H
 
 #define CTRL_KEY(k) ((k) & 0x1f)
 
@@ -18,4 +18,4 @@ global String8 term_buf;
 
 void edits_start();
 
-#endif // EDITS
+#endif // EDITS_H

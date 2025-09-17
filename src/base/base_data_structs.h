@@ -1,5 +1,5 @@
-#ifndef DATA_STRUCTS
-#define DATA_STRUCTS
+#ifndef DATA_STRUCTS_H
+#define DATA_STRUCTS_H
 
 typedef struct {    
     u64 start;
@@ -15,5 +15,4 @@ void* QueuePeek(u32 size, u8 advance);
 
 
 
-#endif // DATA_STRUCTS
-
+#endif // DATA_STRUCTS_H_H
