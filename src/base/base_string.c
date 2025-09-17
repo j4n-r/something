@@ -49,6 +49,7 @@ void Char8Print(Char8 *chr) {
 
 // appends to str
 // this invalidates the to str.str pointer and reassigns a new one 
+// it has to be *str because otherwise the size will not be changed in the original one
 void Str8Append(Arena *arena, String8 *str, String8 str_to_append) {
     String8 tmp = {0};
     tmp.size = str->size + str_to_append.size;
@@ -61,18 +62,18 @@ void Str8Append(Arena *arena, String8 *str, String8 str_to_append) {
 
 String8 Str8FromLiteral(char *str) {
     String8 result = {0};
-    result.size = sizeof(*str) - 1;
+    result.size = strlen(str);
     result.str = (u8*) str;
     return result;
 }
 
 
 String8 Str8Concat(Arena *arena, String8 str, String8 str_to_concat) {
-    u64 size = str.size + str_to_concat.size;
     String8 result = {0};
-    result.str = ArenaPush(arena, size + 1);
+    result.size = str.size + str_to_concat.size;
+    result.str = ArenaPush(arena, result.size); //
     memcpy(result.str           , str.str,           str.size);
-    memcpy(result.str + str.size, str_to_concat.str, str.size);
+    memcpy(result.str + str.size, str_to_concat.str, str_to_concat.size);
 
     return result;
 }

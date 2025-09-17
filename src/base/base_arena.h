@@ -22,4 +22,4 @@ void ArenaPop(Arena *arena, u64 size);
 
 void ArenaClear(Arena *arena);
 
-#endif // BASE_ARENA_H
+#endif // BASE_ARENA

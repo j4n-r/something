@@ -1,4 +1,5 @@
 
+
 Arena *ArenaAlloc(void) {
     Arena *arena = (Arena *)calloc(ARENA_HEADER_SIZE + ARENA_SIZE, 1);
     arena->pos = ARENA_HEADER_SIZE;

@@ -10,6 +10,12 @@ And thanks https://viewsourcecode.org/snaptoken/kilo
 - Variables: snake_case 
 - Macros: PRE_CAPS_LOCK
 
+## TODO 
+- [ ] Test String8 
+  - Done for initilization and join stuff
+- [ ] Implement Queue
+- [ ] Test Queue
+
 ### Helper Commands
 
 ``` fish
