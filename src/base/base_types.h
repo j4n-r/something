@@ -19,7 +19,7 @@ typedef double      f64;
 // if someone would import the parts as a lib
 #define internal        static   
 // when declared in file scope
-#define global          static 
+#define global_var          static 
 // when declared in function scope (will persist it's value over function calls
 #define local_persist   static 
 
@@ -27,4 +27,4 @@ typedef double      f64;
 #define Kilobytes(n)  (n << 10)
 #define Megabytes(n)  (n << 20)
 
-#endif // BASE_TYPES_H
+#endif // BASE_TYPES

@@ -7,6 +7,7 @@
 #include "term/term_inc.h"
 #include "term/term_inc.c"
 
+
 int main() {
     Arena *test_arena = ArenaAlloc();
     Result_KeyEvent key = TERM_parseTerminalInput(test_arena);

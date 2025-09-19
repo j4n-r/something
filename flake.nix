@@ -40,10 +40,18 @@
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            pkg-config
             gcc
             gf
             valgrind
+            wayland
+            wayland-utils
+            wayland-protocols
+            wayland-scanner
           ];
+          env = {
+            WAYLAND_DEBUG = true;
+          };
         };
         apps = {
           default = {

@@ -23,12 +23,19 @@ And thanks https://viewsourcecode.org/snaptoken/kilo
 ```
 
 ``` fish
-showkey -a
+ showkey -a
+```
+
+``` fish
+ wayland-scanner client-header < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell.h
 ```
 
 ## Notes
 - [ ] Bracketed paste mode:
 - [ ] Resizes & signals:
+
+## Resources
+https://wayland-book.com/
 
 ### Keyboard input
 Since the goal is to have vim like layers (normal, insert, visual) and most
