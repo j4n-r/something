@@ -1,6 +1,4 @@
 # Something
-Thanks https://www.rfleury.com/ for the content and https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him) \
-And thanks https://viewsourcecode.org/snaptoken/kilo
 
 ### Conventions:
 - Structs: PRE_ (prefix + CamelCase)
@@ -30,12 +28,15 @@ And thanks https://viewsourcecode.org/snaptoken/kilo
  wayland-scanner client-header < wlr-layer-shell-unstable-v1.xml > wlr-layer-shell.h
 ```
 
+## Resources
+- https://wayland-book.com/
+- https://www.rfleury.com/ 
+- https://github.com/EpicGamesExt/raddebugger (ideas, and some interfaces are stolen from him)
+- https://viewsourcecode.org/snaptoken/kilo
+
 ## Notes
 - [ ] Bracketed paste mode:
 - [ ] Resizes & signals:
-
-## Resources
-https://wayland-book.com/
 
 ### Keyboard input
 Since the goal is to have vim like layers (normal, insert, visual) and most
