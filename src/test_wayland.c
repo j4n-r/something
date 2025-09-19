@@ -6,10 +6,10 @@
 #include <wayland-client.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../wayland/xdg-shell.h"
-#include "../wayland/xdg-shell.c"
-#include "../wayland/wlr-layer-shell.h"
-#include "../wayland/wlr-layer-shell.c"
+#include "../wayland-resources/xdg-shell.h"
+#include "../wayland-resources/xdg-shell.c"
+#include "../wayland-resources/wlr-layer-shell.h"
+#include "../wayland-resources/wlr-layer-shell.c"
 
 
 struct client_state {
