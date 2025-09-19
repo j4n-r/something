@@ -22,6 +22,9 @@ struct client_state {
     // Objects
     struct wl_surface *wl_surface;
     struct zwlr_layer_surface_v1 *zwlr_surface;
+    // config
+    uint32_t width; 
+    uint32_t height;
 };
 
 static void
@@ -35,15 +38,21 @@ static const struct wl_buffer_listener wl_buffer_listener = {
     .release = wl_buffer_release,
 };
 
+static uint32_t
+calc_argb(uint8_t a, uint8_t r, uint8_t g, uint8_t b) {
+    uint8_t R = (r * a) / 255;
+    uint8_t G = (g * a) / 255;
+    uint8_t B = (b * a) / 255;
+    return ((uint32_t)a << 24) | ((uint32_t)R << 16) | ((uint32_t)G << 8) | B;
+}
+
 static struct wl_buffer*
 draw_frame(struct client_state *state)
 {
     uint32_t bytes_per_pixel = 4; 
-    uint32_t width = 300; 
-    uint32_t height = 200;
-    uint32_t stride = width * bytes_per_pixel; // row size
+    uint32_t stride = state->width * bytes_per_pixel; // row size
 
-    uint32_t size = width * height * bytes_per_pixel;
+    uint32_t size = state->width * state->height * bytes_per_pixel;
     int fd = memfd_create("wl_shm", 0);
     if (ftruncate(fd, size) != 0)
         exit(1);
@@ -55,13 +64,13 @@ draw_frame(struct client_state *state)
 
     struct wl_shm_pool *pool = wl_shm_create_pool(state->shm, fd, size);
     struct wl_buffer *buffer = wl_shm_pool_create_buffer(pool,
-        0, width, height, stride, WL_SHM_FORMAT_ARGB8888);
+        0, state->width, state->height, stride, WL_SHM_FORMAT_ARGB8888);
     wl_shm_pool_destroy(pool);
     close(fd);
 
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            data[y * width + x] = 0xFF00FF00; // Fully opaque green
+    for (uint32_t y = 0; y < state->height; y++) {
+        for (uint32_t x = 0; x < state->width; x++) {
+            data[y * state->width + x] = calc_argb(100, 255, 255,255); 
         }
     }
     munmap(data, size);
@@ -134,6 +143,8 @@ wl_registry_listener registry_listener = {
 int main()
 {
     struct client_state state = {0};
+    state.width = 300;
+    state.height = 200;
     state.wl_display = wl_display_connect(NULL);
     state.registry = wl_display_get_registry(state.wl_display);
     wl_registry_add_listener(state.registry, &registry_listener, &state);
@@ -148,9 +159,7 @@ int main()
     zwlr_layer_surface_v1_add_listener(state.zwlr_surface,
                                         &zwlr_surface_listener, &state);
 
-    /* zwlr_layer_surface_v1_set_anchor(state.zwlr_surface, */
-    /*     ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP | ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT); */
-    zwlr_layer_surface_v1_set_size(state.zwlr_surface, 300, 200);
+    zwlr_layer_surface_v1_set_size(state.zwlr_surface, state.width, state.height);
 
     wl_surface_commit(state.wl_surface);
 
