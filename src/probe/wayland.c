@@ -1,4 +1,5 @@
 #define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include <cairo.h>
 #include <stdint.h>
 #include <sys/mman.h>
 #include <unistd.h>
@@ -6,10 +7,10 @@
 #include <wayland-client.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../wayland-resources/xdg-shell.h"
-#include "../wayland-resources/xdg-shell.c"
-#include "../wayland-resources/wlr-layer-shell.h"
-#include "../wayland-resources/wlr-layer-shell.c"
+#include "../../wayland-resources/xdg-shell.h"
+#include "../../wayland-resources/xdg-shell.c"
+#include "../../wayland-resources/wlr-layer-shell.h"
+#include "../../wayland-resources/wlr-layer-shell.c"
 
 
 struct client_state {
@@ -68,11 +69,28 @@ draw_frame(struct client_state *state)
     wl_shm_pool_destroy(pool);
     close(fd);
 
-    for (uint32_t y = 0; y < state->height; y++) {
-        for (uint32_t x = 0; x < state->width; x++) {
-            data[y * state->width + x] = calc_argb(100, 255, 255,255); 
-        }
-    }
+    /* for (uint32_t y = 0; y < state->height; y++) { */
+    /*     for (uint32_t x = 0; x < state->width; x++) { */
+    /*         data[y * state->width + x] = calc_argb(100, 255, 255,255);  */
+    /*     } */
+    /* } */
+    cairo_surface_t *cairo_surface =
+        cairo_image_surface_create_for_data((uint8_t*)data, CAIRO_FORMAT_ARGB32,
+                                            state->width, state->height, stride);
+
+    cairo_t *cr =
+        cairo_create (cairo_surface);
+
+    cairo_select_font_face (cr, "serif",
+                            CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
+    cairo_set_font_size (cr, 32.0);
+    cairo_set_source_rgb (cr, 0.0, 0.0, 1.0);
+    cairo_move_to (cr, 10.0, 50.0);
+    cairo_show_text (cr, "Hello, world");
+
+    cairo_destroy (cr);
+    cairo_surface_destroy (cairo_surface);
+
     munmap(data, size);
     wl_buffer_add_listener(buffer, &wl_buffer_listener, NULL);
     return buffer;

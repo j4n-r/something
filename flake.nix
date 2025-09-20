@@ -16,20 +16,21 @@
             version = "0.0.1";
             src = ./.;
 
-            nativeBuildInputs = [ pkgs.gcc];
+            nativeBuildInputs = [ pkgs.gcc pkgs.pkg-config];
 
-            CFLAGS = "-Wextra -Wall -pedantic -std=c11 -g3";
-            CC = "gcc";
+          #   CFLAGS = "-Wextra -Wall -pedantic -std=c11 -g3";
+          #   CC = "gcc";
 
-            buildPhase = ''
-                mkdir -p build
-                $CC $CFLAGS ./src/edits/kilo.c -o build/kilo
-            '';
+          #   buildPhase = ''
+          #       mkdir -p build
+          #       $CC $CFLAGS ./src/edits/kilo.c -o build/kilo
+          #   '';
 
-            installPhase = ''
-                mkdir -p $out/bin
-                cp build/kilo $out/bin/
-            '';
+          #   installPhase = ''
+          #       mkdir -p $out/bin
+          #       cp build/kilo $out/bin/
+          #   '';
+          # };
           };
           test_ansi = pkgs.writeShellScriptBin "test_ansi" ''
             printf "$1"
@@ -44,10 +45,14 @@
             gcc
             gf
             valgrind
+            cairo
+            pango.dev
             wayland
             wayland-utils
             wayland-protocols
             wayland-scanner
+
+            timg
           ];
           env = {
             WAYLAND_DEBUG = true;
